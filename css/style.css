@@ -1,19 +1,9 @@
-:root{
-    --lefc-bg: #c1fbff;
-    --lefc-color: #22201e;
-}
-
-.dark-mode{
-    --lefc-bg: #22201e;
-    --lefc-color: #c1fbff;
-}
-
 body {
-    background:  var(--lefc-bg), no-repeat center center fixed;
+    background:  #c1fbff, no-repeat center center fixed;
     background-size: cover;
     image-rendering: optimizespeed;
     font-family: Roboto, 'Sans Serif';
-    color: var(--lefc-color);
+    color: #22201e;
     text-align: justify;
     word-break: break-word;
 }
