@@ -13,7 +13,7 @@ body {
     background-size: cover;
     image-rendering: optimizespeed;
     font-family: Roboto, 'Sans Serif';
-    color: var(--lefc-color: #22201e);
+    color: var(--lefc-color);
     text-align: justify;
     word-break: break-word;
 }
@@ -47,7 +47,7 @@ webring:hover {
 }
 
 .webtitle {
-     color: var(--lefc-color: #22201e);
+     color: var(--lefc-color);
      text-decoration: none;
      font-weight: bold;
 }
