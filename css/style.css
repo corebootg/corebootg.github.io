@@ -1,0 +1,22 @@
+body {
+    background:  #c1fbff, no-repeat center center fixed;
+    background-size: cover;
+    image-rendering: optimizespeed;
+    font-family: Roboto, 'Sans Serif';
+    color: #22201e;
+    text-align: justify;
+    word-break: break-word;
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url(../RobotoRegular.ttf);
+}
+
+.webtitle {
+     color: black;
+     border: 6px solid #22201e;
+     border-radius: 4px;
+     font-family: Super_Mario_256;
+     src: url(../SuperMario256.tff);
+}
