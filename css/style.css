@@ -14,13 +14,21 @@ body {
 }
 
 @font-face {
-    font-family: SuperMario256;
-    src: url(../SuperMario256.ttf);
+  font-family: Roboto;
+  src: url(Roboto-Bold.ttf);
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url(Roboto-Italic.ttf);
+  font-weight: italic;
 }
 
 .webtitle {
      color: black;
+     background-color: #22201e;
      border: 6px solid #22201e;
-     border-radius: 4px;
-     font-family: SuperMario256;
+     border-radius: 8px;
+     font-weight: bold;
 }
