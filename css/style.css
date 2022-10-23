@@ -15,13 +15,13 @@ body {
 
 @font-face {
   font-family: Roboto;
-  src: url(Roboto-Bold.ttf);
+  src: url(../Roboto-Bold.ttf);
   font-weight: bold;
 }
 
 @font-face {
   font-family: Roboto;
-  src: url(Roboto-Italic.ttf);
+  src: url(../Roboto-Italic.ttf);
   font-weight: italic;
 }
 
