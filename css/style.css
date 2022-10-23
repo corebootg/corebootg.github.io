@@ -1,9 +1,9 @@
-:root {
+:root{
     --lefc-bg: #c1fbff;
     --lefc-color: #22201e;
 }
 
-.dark-mode {
+.dark-mode{
     --lefc-bg: #22201e;
     --lefc-color: #c1fbff;
 }
@@ -16,6 +16,17 @@ body {
     color: var(--lefc-color: #22201e);
     text-align: justify;
     word-break: break-word;
+}
+
+.webring {
+    border: 4px solid #4e345;
+    width: 100px;
+    height: 30px;
+}
+
+webring:hover {
+    width: 110px;
+    height: 40px;
 }
 
 @font-face {
