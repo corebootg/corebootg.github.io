@@ -1,9 +1,19 @@
+:root {
+    --lefc-bg: #c1fbff;
+    --lefc-color: #22201e;
+}
+
+.dark-mode {
+    --lefc-bg: #22201e;
+    --lefc-color: #c1fbff;
+}
+
 body {
-    background:  #c1fbff, no-repeat center center fixed;
+    background:  var(--lefc-bg), no-repeat center center fixed;
     background-size: cover;
     image-rendering: optimizespeed;
     font-family: Roboto, 'Sans Serif';
-    color: #22201e;
+    color: var(--lefc-color: #22201e);
     text-align: justify;
     word-break: break-word;
 }
@@ -26,7 +36,8 @@ body {
 }
 
 .webtitle {
-     color: black;
+     color: var(--lefc-color: #22201e);
+     text-decoration: none;
      font-weight: bold;
 }
 
@@ -44,4 +55,12 @@ a {
 
 a:hover {
     color: darkslateblue;   
+}
+
+#icon {
+    width: 50%;
+    height: 50%;
+    cursor: pointer;
+    text-align: right;
+    vertical-align: right;
 }
