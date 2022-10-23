@@ -9,13 +9,27 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
   <body>
-    <h1 class="webtitle">Avityred's coreboot guides.</h1>
+    <div class="topbar">
+      <h1 class="webtitle">Avityred's coreboot guides.</h1>
+      <img src="images/moon.png" id="icon"></img>
+    </div>
     <hr />
     <h2>Guides</h2>
     <div class="guides">
       <p><a href="guide/t60-t60p.xhtml">Coreboot Thinkpad T60/T60p</a></p>
     </div>
-    
+  
+  <script>
+    var icon = document.getElementById("icon");
+    icon.onClick = function(){
+      document.body.classList.toggle("dark-mode");
+      if(document.body.classList.contains("dark-mode")){
+        icon.src = "images/sun.png";
+      }else{
+        icon.src = "images/moon.png";
+    }
+  </script>
+  
   </body>
   
 </html>
