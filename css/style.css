@@ -13,10 +13,14 @@ body {
     src: url(../Roboto-Regular.ttf);
 }
 
+@font-face {
+    font-family: SuperMario256;
+    src: url(../SuperMario256.ttf);
+}
+
 .webtitle {
      color: black;
      border: 6px solid #22201e;
      border-radius: 4px;
      font-family: SuperMario256;
-     src: url(../SuperMario256.tff);
 }
