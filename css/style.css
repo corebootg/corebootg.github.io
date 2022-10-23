@@ -58,9 +58,8 @@ a:hover {
 }
 
 #icon {
-    width: 50%;
-    height: 50%;
+    width: 30%;
+    height: 30%;
     cursor: pointer;
     text-align: right;
-    vertical-align: right;
 }
