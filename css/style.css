@@ -10,7 +10,7 @@ body {
 
 @media (prefers-color-scheme: dark) {
     body {
-        background:  #22201e, no-repeat center center fixed;
+        background:  #22201e;
         color: #c1fbff;
     }
 }
