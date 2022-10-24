@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>X200 - Coreboot Guides</title>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="no-referrer" />
+    <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+  </head>
+  <body>
+    <h1 class="webtitle"><img src="../images/moon.png" style="width: 32px; height: 32px;" /><a href="../index.xhtml" class="webtitle">Updated Coreboot Guides.</a><img src="../images/sun.png" style="width: 32px; height: 32px;" /></h1>
+    <p style="font-family: PixeloidSans;">Good Luck Corebooting!</p>
+    <hr />
+    <h1 class="webtitle">Corebooting a Thinkpad X200</h1>
+    <p style="font-family: PixeloidSans;"><small>Latest Update: 24-10-2022</small></p>
+    <br/>
+    <p><b style="color: red;">CAUTION: </b>When flashing coreboot, <b>there's a risk of bricking your computer</b>.</p>
+    <p>For this guide, you will need external programming equipment. <b style="color: hotpink">(We recommend a Bus Pirate or a Raspberry Pi)</b></p>
+    <br/>
+    <p><b style="color: red;">WARNING: </b>X200s with LED Screens must have their cable and inverter with a CCFL-compatible version to work with AFFS screens.</p>
+    
+    <section id="info">
+        <h2>X200 Flashing</h2>
+        <p>There are two different flashchips used on the X200: An 8 pin 4MiB, and a 16 pin 8MiB, located just under the palmrest.<br/> Make sure to find out your type before deciding to buy a 8-pin or 16-pin SOIC clip.</p>
+        <br/>
+        <h3>16-Pin BIOS Chip</h3>
+        <p><code>---  display of your X200 ---<br/>
+            9     --  -  --     8*<br/>
+           10*    --  -  --     7*<br/>
+           11     --  -  --     6<br/>
+           12     --  -  --     5<br/>
+           13     --  -  --    4<br/>
+           14     --  -  --    3<br/>
+           15*    --  -  --    2*<br/>
+           16*    --  -  --     1 -> Pin #1<br/>
+    ---  palmrest of your X200 ---</code></p><br/>
+    <table>
+        <thead>
+            <tr>
+            <th >Pin</th>
+            <th >SPI Pin Name</th>
+            <th >Bus Pirate</th>
+            <th >Raspberry Pi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td >2</td>
+                <td >3.3V</td>
+                <td ><em>Red</em></td>
+                <td >17</td>
+            </tr>
+            <tr>
+                <td >7</td>
+                <td >CS</td>
+                <td >White</td>
+                <td >24</td>
+            </tr>
+            <tr>
+                <td >8</td>
+                <td >MISO</td>
+                <td >Black</td>
+                <td >21</td>
+            </tr>
+            <tr>
+                <td >10</td>
+                <td >GND</td>
+                <td >Brown</td>
+                <td >25</td>
+            </tr>
+            <tr>
+                <td >15</td>
+                <td >MOSI</td>
+                <td >Gray</td>
+                <td >19</td>
+            </tr>
+            <tr>
+                <td >16</td>
+                <td >CLK</td>
+                <td >Purple</td>
+                <td >23</td>
+            </tr>
+        </tbody>
+    </table>
+    <br/>
+    <h3>8-Pin BIOS Chip</h3>
+    <p><code>--- VGA ----<br/>
+        4321<br/>
+        |--|<br/>
+        |--|<br/>
+        |--|<br/>
+        5678<br/>
+---Hard Drive ---</code></p>
+<table>
+    <thead>
+        <tr>
+            <th >Pin</th>
+            <th >SPI Pin Name</th>
+            <th >Bus Pirate</th>
+            <th >Raspberry Pi</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td >1</td>
+            <td >CS</td>
+            <td >White</td>
+            <td >24</td>
+        </tr>
+        <tr>
+            <td >2</td>
+            <td >MISO</td>
+            <td >Black</td>
+            <td >21</td>
+        </tr>
+        <tr>
+            <td >3</td>
+            <td colspan="3"><em>Not Used</em></td>
+        </tr>
+        <tr>
+            <td >4</td>
+            <td >GND</td>
+            <td >Brown</td>
+            <td >25</td>
+        </tr>
+        <tr>
+            <td >5</td>
+            <td >MOSI</td>
+            <td >Gray</td>
+            <td >19</td>
+        </tr>
+        <tr>
+            <td >6</td>
+            <td >CLK</td>
+            <td >Purple</td>
+            <td >23</td>
+        </tr>
+        <tr>
+            <td >7</td>
+            <td colspan="3"><em>Not Used</em></td>
+        </tr>
+        <tr>
+            <td >8</td>
+            <td >3.3V</td>
+            <td ><em>Red</em></td>
+            <td >17</td>
+        </tr>
+    </tbody>
+    
+</table>
+    
+    </section>
+    <br/>
+    <section id="prep">
+      <h2>Preparation:</h2>
+      
+    </section>
+    <br/>
+
+
+
+</body>
+  
+</html>

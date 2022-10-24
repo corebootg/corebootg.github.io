@@ -84,6 +84,30 @@ a {
     color: rgb(150, 56, 134);  
 }
 
+table,
+thead,
+tr,
+th,
+td,
+tbody {
+    text-align: center;
+    margin: 0 auto;
+}
+
+td {
+    border: 4px #4b4641 solid;
+    background-color: #c0bdb9;
+    color: #4b4641;
+}
+
+th {
+    border: 3px rgb(114, 71, 107);
+}
+
+tr {
+    border: 6px rgb(114, 71, 107) solid;
+}
+
 a:hover {
     color: rgb(110, 41, 99);   
 }
@@ -94,4 +118,10 @@ code {
     padding-inline: 4px;
     font-family: PixeloidSans;
     text-align: center;
+    margin: 0 auto;
+}
+
+ul {
+    text-align: center;
+    margin: 0 auto;
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
-    <title>T60/T60p - coreboot guide</title>
+    <title>T60/T60p - Coreboot Guides</title>
     <meta content="text/html; charset=utf-8" http-equiv="content-type" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="referrer" content="no-referrer" />
@@ -15,11 +15,11 @@
     <h1 class="webtitle">Corebooting a Thinkpad T60/T60p</h1>
     <p style="font-family: PixeloidSans;"><small>Latest Update: 24-10-2022</small></p>
     <br/>
-    <p><b style="color: red;">CAUTION: </b>When flashing coreboot, <b>there's a risk of bricking your computer</b>, so it is highly recommended to have external programming equipment<br/> for backup incase something goes wrong. If you brick your computer, you will need external equipment to restore it.</p>
-    <p>If you aren't sure how to set kernel parameters you can check how in the  <a href="https://wiki.archlinux.org/title/Kernel_parameters" style="font-family: PixeloidSans;">Arch Wiki</a></p>
+    <p><b style="color: red;">CAUTION: </b>When flashing coreboot, <b>there's a risk of bricking your computer</b>. so it is highly recommended to have external programming equipment<br/> for backup incase something goes wrong. If you brick your computer, you will need external equipment to restore it.</p>
     <section id="prep">
       <h2>Preparation:</h2>
       <p>Starting off, make sure <code>iomem="relaxed"</code> is set as a kernel parameter. If you do not have this set then most read and write operations will fail.</p>
+      <p>If you aren't sure how to set kernel parameters you can check how in the  <a href="https://wiki.archlinux.org/title/Kernel_parameters" style="font-family: PixeloidSans;">Arch Wiki</a></p>
       <p>You will also need some utilities that can be obtained from Libreboot, I recommend you use the <a href="../libreboot_r20160907_util.tar.xz" style="font-family: PixeloidSans;">/20160907</a> version of libreboot.</p>
     </section>
     <br/>
