@@ -9,9 +9,107 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
   </head>
   <body>
-    <h1 class="webtitle"><a href="../index.xhtml" style="color: black;">Avityred's coreboot guides.</a></h1>
+    <h1 class="webtitle"><img src="../images/moon.png" style="width: 32px; height: 32px;" /><a href="../index.xhtml" class="webtitle">Updated Coreboot Guides.</a><img src="../images/sun.png" style="width: 32px; height: 32px;" /></h1>
+    <p style="font-family: PixeloidSans;">Good Luck Corebooting!</p>
     <hr />
     <h1 class="webtitle">Corebooting a Thinkpad T60/T60p</h1>
+    <p style="font-family: PixeloidSans;"><small>Latest Update: 24-10-2022</small></p>
+    <br/>
+    <p><b style="color: red;">CAUTION: </b>When flashing coreboot, <b>there's a risk of bricking your computer</b>, so it is highly recommended to have external programming equipment<br/> for backup incase something goes wrong. If you brick your computer, you will need external equipment to restore it.</p>
+    <p>If you aren't sure how to set kernel parameters you can check how in the  <a href="https://wiki.archlinux.org/title/Kernel_parameters" style="font-family: PixeloidSans;">Arch Wiki</a></p>
+    <section id="prep">
+      <h2>Preparation:</h2>
+      <p>Starting off, make sure <code>iomem="relaxed"</code> is set as a kernel parameter. If you do not have this set then most read and write operations will fail.</p>
+      <p>You will also need some utilities that can be obtained from Libreboot, I recommend you use the <a href="../libreboot_r20160907_util.tar.xz" style="font-family: PixeloidSans;">/20160907</a> version of libreboot.</p>
+    </section>
+    <br/>
+    <section id="vgabios">
+      <h2>Extracting the VGABIOS</h2><p style="opacity: 0.6;"><smaller>Skip if you have an intel GPU</smaller></p>
+      <p>On the terminal, become sudo with <code>su</code> or <code>sudo su</code></p>
+      <p>You can just copy-paste this code in bash to automatically extract the VGABIOS:<br/> <code> cat /proc/iomem | grep 'Video ROM' | (read m; m=${m/ :*}; s=${m/-*}; e=${m/*-}; \ <br/>dd if=/dev/mem of=vgabios.bin bs=1c skip=$[0x$s] count=$[$[0x$e]-$[0x$s]+1])</code></p>
+      <p>The VGABIOS has now been extracted in the current directory as <code>VGABIOS.bin</code></p>
+      <h2>Finding PCI IDs from VGABIOS using romheaders</h2>
+      <p>Install the FCode Suite.</p>
+      <p>On Debian-Based Linux Distributions:</p>
+      <p><code>sudo apt-get install fcode-utils</code></p>
+      <p>On Arch-Based Linux Distributions:</p>
+      <p><code>git clone https://aur.archlinux.org/fcode-utils.git<br/>makepkg -si</code></p>
+      <p>Or you can use an AUR Helper (Using YAY in this example):</p>
+      <p><code>yay -S fcode-utils</code></p>
+      <p>Run the following command to get PCI IDs:</p>
+      <p><code>romheaders vgabios.bin</code></p>
+      <p>After running that command, look for the <code>vendor_id</code> and <code>device_id</code> IDs and store them somewhere for later.</p>
+      <p>Vendor and Device IDs for T60/T60Ps are <b>usually</b> <code>1002,7145</code></p>
+    </section>
+    <br/>
+    <section id="og-bios">
+      <h2>Back up the official Lenovo Proprietary BIOS</h2>
+      <p>It is <b>highly recommended</b> to backup you original BIOS.</p>
+      <p>Every BIOS is unique, so if you lose your original BIOS image you won't be able to restore it</p>
+      <p>CD into the libreboot folder and type:</p>
+      <p><code>sudo /flashrom/flashrom_lenovobios_sst -p internal -r bios.bin</code></p>
+      <p><code>sudo ./flashrom_lenovobios_macronix -p internal -r bios.bin</code></p>
+      <p>If you see a <code>bios.bin</code> file appear then the backup is successful and you can proceed. Make sure to keep this backup safe.</p>
+    </section>
+    <br/>
+    <section id="build-core">
+      <h2>Building coreboot</h2>
+      <h3>Preparation</h3>
+      <p>Install the dependencies for building coreboot:</p>
+      <p>For Debian-Based Linux Distributions:</p>
+      <p><code>sudo apt-get install iasl libc6-dev bison flex zlib1g-dev gnat</code></p>
+      <p>For Arch-Based Linux Distributions:</p>
+      <p><code>sudo pacman -S iasl bison flex gcc-ada</code></p>
+      <br/>
+      <p>Clone the coreboot repo:</p>
+      <p><code>git clone https://review.coreboot.org/coreboot<br/>
+        cd coreboot<br/>
+        git submodule update --init --checkout</code></p>
+      <br/>
+      <h3>Configuring coreboot</h3>
+      <p>Copy over the VGABIOS into the coreboot folder.</p>
+      <br/>
+      <p><code>make menuconfig</code></p>
+      <p>Now set the settings accordingly:</p>
+      <p><code>Mainboard --><br/>  
+        Mainboard vendor (Emulation) --> Lenovo<br/><br/>
+        Mainboard --><br/> 
+        Mainboard model --> ThinkPad T60 / T60p<br/><br/>
+        Chipset --><br/>
+        Include a Top swap bootblock --> true<br/><br/>
+        Chipset --><br/>
+        Lock down chipset in coreboot --> false<br/><br/>
+        VGA BIOS  ---><br/>
+        [*] Add a VGA BIOS image<br/>
+        (vgabios.bin) VGA BIOS path and filename<br/>
+        (vendor_id,device_id) VGA device PCI IDs</code></p>
+      <h3>Building the coreboot rom</h3>
+      <p>Now it is time to build coreboot.</p>
+      <p>Build the coreboot toolchain:</p>
+      <p><code>make crossgcc-i386</code></p>
+      <p>Once it's done, proceed to build the coreboot romfile:</p>
+      <p><code>make</code></p>
+      <h3>Building coreboot utilities</h3>
+      <p>Build BUCTS</p>
+      <p><code>make -C util/bucts/</code></p>
+      <p>Build NVRamtool</p>
+      <p><code>make -C util/nvramtool/</code></p>
+      <p>Set BUCTS to 1</p>
+      <p><code>util/bucts/bucts --set</code></p>
+    </section>
+    <br/>
+    <section id="flash">
+      <h2>Flashing coreboot</h2>
+      <p>Go back into the libreboot folder and copy the coreboot rom in it.</p>
+      <p>Now run:</p>
+      <p><code>sudo ./flash i945lenovo\_firstflash coreboot.rom</code></p>
+      <p>When finished, shut down the machine. <b style="color: red;">DO NOT REBOOT</b></p>
+      <p>Once booted, unset bucts</p>
+      <p><code>util/bucts/bucts --unset</code></p>
+      <p>Then proceed onto the second flash.</p>
+      <p><code>sudo ./flash i945lenovo\_secondflash coreboot.rom</code></p>
+      <p>Shut down the computer once again and you should be done.</p>
+    </section>
     
   </body>
   

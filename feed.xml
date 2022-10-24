@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+    <title>coreboot guides</title>
+    <link>https://corebootguides.com</link>
+    <description>Up to date coreboot guides.</description>
+    <language>en-us</language>
+    <item>
+        <title>Changelog</title>
+        <pubDate>Monday, 24th Oct 2022 4:49</pubDate>
+        <p>- Added T60/T60P Guide.</p>
+        <p>- Added automatic dark mode / light mode switching.</p>
+    </item>
+    </channel>
+</rss>

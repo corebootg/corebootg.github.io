@@ -1,23 +1,38 @@
+:root {
+    --bg: #c1fbff;
+    --co: #22201e;
+    --cd: #c0bdb9;
+}
+
 body {
-    background:  #c1fbff, no-repeat center center fixed;
+    background:  no-repeat center center fixed;
+    background-color: var(--bg);
     background-size: cover;
     image-rendering: optimizespeed;
     font-family: Roboto, 'Sans Serif';
-    color: #22201e;
+    color: var(--co);
     text-align: justify;
     word-break: break-word;
 }
 
 @media (prefers-color-scheme: dark) {
-    body {
-        background:  #22201e;
-        color: #c1fbff;
+    :root {
+        --bg:  #22201e;
+        --co: #c1fbff;
+        --cd: #4b4641;
     }
+}
+
+@font-face {
+    font-family: PixeloidSans;
+    src: url(../PixeloidSans.ttf);
+    font-weight: bold;
 }
 
 @font-face {
     font-family: Roboto;
     src: url(../Roboto-Regular.ttf);
+    font-weight: normal;
 }
 
 @font-face {
@@ -39,9 +54,16 @@ body {
 }
 
 .webring {
-    border: 4px solid #4e345;
+    border: 4px solid rgb(90, 127, 175);
     width: 100px;
     height: 30px;
+    text-align: center;
+    margin: 2px;
+}
+
+hr {
+    color: var(--co);
+    width: 50%
 }
 
 p,
@@ -52,17 +74,24 @@ h4 {
     text-align: center;
 }
 
+.csmall {
+    max-width: 845px;
+    position: fixed;
+}
+
 a {
-    text-decoration: none;   
+    text-decoration: none; 
+    color: rgb(150, 56, 134);  
 }
 
 a:hover {
-    color: darkslateblue;   
+    color: rgb(110, 41, 99);   
 }
 
-#icon {
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-    text-align: right;
+code {
+    background-color: var(--cd);
+    border-radius: 5px;
+    padding-inline: 4px;
+    font-family: PixeloidSans;
+    text-align: center;
 }
